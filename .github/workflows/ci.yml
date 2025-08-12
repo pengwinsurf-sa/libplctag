@@ -167,6 +167,15 @@ jobs:
         mkdir -p release_zips
         mv *.zip release_zips/
 
+        
+    - name: 'ApiCov'
+      uses: codesa-ai/ApiCov@v0.3.4-pre
+      with:
+        root_path: ${{ github.workspace }}
+        api_key: ${{ secrets.APICOV_KEY }}
+        install_path: $GITHUB_WORKSPACE/install_dir
+        doxygen_path: $GITHUB_WORKSPACE
+        
     - name: Upload ZIP artifacts
       uses: actions/upload-artifact@v4
       with:
